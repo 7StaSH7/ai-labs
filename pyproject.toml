@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "ai-labs"
+version = "0.1.0"
+description = ""
+authors = ["Aleksandr <36007931+7StaSH7@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "ai_labs"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+numpy = "^1.24.2"
+
+[tool.poetry.scripts]
+lab1_task1 = "ai_labs.lab1:task1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
