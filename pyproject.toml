@@ -9,10 +9,13 @@ packages = [{include = "ai_labs"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 numpy = "^1.24.2"
+matplotlib = "^3.6.3"
+black = "^23.1.0"
 
 [tool.poetry.scripts]
 lab1_task1 = "ai_labs.lab1:task1"
-
+lab1_task2 = "ai_labs.lab1:task2"
+lab1_task3 = "ai_labs.lab1:task2"
 
 [build-system]
 requires = ["poetry-core"]
