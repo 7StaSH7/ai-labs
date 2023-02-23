@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def task1() -> None:
+def main() -> None:
     print("*** Программа визуализации гармонического сигнала ***")
 
     f0 = float(input("Введите частоту сигнала в герцах: "))

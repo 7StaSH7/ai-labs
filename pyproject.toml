@@ -13,9 +13,9 @@ matplotlib = "^3.6.3"
 black = "^23.1.0"
 
 [tool.poetry.scripts]
-lab1_task1 = "ai_labs.lab1:task1"
-lab1_task2 = "ai_labs.lab1:task2"
-lab1_task3 = "ai_labs.lab1:task2"
+lab1_task1 = "ai_labs.lab1.task1:main"
+lab1_task2 = "ai_labs.lab1.task2:main"
+lab1_task3 = "ai_labs.lab1.task3:main"
 
 [build-system]
 requires = ["poetry-core"]
