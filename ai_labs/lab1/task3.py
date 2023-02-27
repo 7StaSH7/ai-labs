@@ -1,5 +1,4 @@
 import numpy as np
-from numpy.typing import NDArray
 import matplotlib.pyplot as plt
 from time import time
 
@@ -9,7 +8,7 @@ def main() -> None:
     t2 = float(input("Конец интервала: "))
     N = float(input("Кол-во точек: "))
 
-    def dft(*, _t1: float, _t2: float, _N: float, isPlot: bool) -> float:
+    def dft(*, _t1: float, _t2: float, _N: float, isPlot: bool = False) -> float:
         f0 = 2000
         mvis = 4
         fdn = 2 * f0  # Частота дискретизации
@@ -36,6 +35,7 @@ def main() -> None:
 
         if isPlot:
             plt.figure()
+            plt.title("DFT")
             plt.plot(ff, np.real(Y2), "-r")
             plt.xlabel("Frequency, Hz")
             plt.ylabel("Fourier-image modulus squared")
@@ -68,7 +68,7 @@ def main() -> None:
 
         return exec_time
 
-    def fft(*, _t1: float, _t2: float, _N: float, isPlot: bool) -> float:
+    def fft(*, _t1: float, _t2: float, _N: float, isPlot: bool = False) -> float:
         f0 = 2000
         mvis = 4
         fdn = 2 * f0  # Частота дискретизации
@@ -93,6 +93,7 @@ def main() -> None:
         if isPlot:
             plt.figure()
             plt.plot(ff, np.real(Y2), "-r")
+            plt.title("FFT")
             plt.xlabel("Frequency, Hz")
             plt.ylabel("Fourier-image modulus squared")
 
@@ -139,10 +140,10 @@ def main() -> None:
                 x2.append(item)
 
         if isPlot:
-            plt.plot(x1, y1, color="r")
-            plt.plot(x2, y2, color="r")
             plt.axhline(0, color="black", linewidth=1)
             plt.axvline(0, color="black", linewidth=1)
+            plt.plot(x1, y1, "-r")
+            plt.plot(x2, y2, "-r")
             plt.grid()
             plt.show()
 
@@ -167,7 +168,7 @@ def main() -> None:
         if isPlot:
             plt.axhline(0, color="black", linewidth=1)
             plt.axvline(0, color="black", linewidth=1)
-            plt.plot(x, y, color="r")
+            plt.plot(x, y, "-r")
             plt.grid()
             plt.show()
 
@@ -178,7 +179,7 @@ def main() -> None:
         if isPlot:
             plt.axhline(0, color="black", linewidth=1)
             plt.axvline(0, color="black", linewidth=1)
-            plt.plot(v, y, color="r")
+            plt.plot(v, y, "-r")
             plt.grid()
             plt.show()
 
@@ -187,7 +188,7 @@ def main() -> None:
     def hyperbolic_tangent(*, v, a, isPlot=True):
         y = np.tanh(v / a)
         if isPlot:
-            plt.plot(v, y, color="r")
+            plt.plot(v, y, "-r")
             plt.axhline(0, color="black", linewidth=1)
             plt.axvline(0, color="black", linewidth=1)
             plt.grid()
@@ -198,8 +199,8 @@ def main() -> None:
     dft(_t1=t1, _t2=t2, _N=N, isPlot=False)
     fft(_t1=t1, _t2=t2, _N=N, isPlot=False)
 
-    dft_time = [dft(_t1=t1, _t2=t2, _N=2**i, isPlot=False) for i in range(15, 20)]
-    fft_time = [fft(_t1=t1, _t2=t2, _N=2**i, isPlot=False) for i in range(15, 20)]
+    dft_time = [dft(_t1=t1, _t2=t2, _N=2**i) for i in range(15, 20)]
+    fft_time = [fft(_t1=t1, _t2=t2, _N=2**i) for i in range(15, 20)]
 
     plt.figure()
     plt.plot(list(range(15, 20)), dft_time, "-r", label="ДПФ")
@@ -218,16 +219,16 @@ def main() -> None:
     hyperbolic_tangent(v=v, a=1)
 
     print("threshold: ")
-    np.column_stack((v, threshold(v=v, a=3, isPlot=False)))
+    print(np.column_stack((v, threshold(v=v, a=3, isPlot=False))))
 
     print("piecewise linear: ")
-    np.column_stack((v, piecewise_linear(v=v, a0=3, a1=6, isPlot=False)))
+    print(np.column_stack((v, piecewise_linear(v=v, a0=3, a1=6, isPlot=False))))
 
     print("sigmoid: ")
-    np.column_stack((v, sigmoid(v=v, a=1, isPlot=False)))
+    print(np.column_stack((v, sigmoid(v=v, a=1, isPlot=False))))
 
     print("hyperbolic tangent: ")
-    np.column_stack((v, hyperbolic_tangent(v=v, a=1, isPlot=False)))
+    print(np.column_stack((v, hyperbolic_tangent(v=v, a=1, isPlot=False))))
 
     def diff(x, y):
         d = list()
@@ -241,12 +242,14 @@ def main() -> None:
     plt.subplot(2, 1, 1)
     plt.plot(v, sigmoid(v=v, a=1, isPlot=False))
     plt.grid()
+    plt.title("Sigmoid")
     plt.axhline(0, color="black", linewidth=1)
     plt.axvline(0, color="black", linewidth=1)
 
     plt.subplot(2, 1, 2)
     plt.plot(v, result)
     plt.grid()
+    plt.title("Diff of sigmoid")
     plt.axhline(0, color="black", linewidth=1)
     plt.axvline(0, color="black", linewidth=1)
 
