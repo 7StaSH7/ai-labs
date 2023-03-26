@@ -17,6 +17,11 @@ lab1_task1 = "ai_labs.lab1.task1:main"
 lab1_task2 = "ai_labs.lab1.task2:main"
 lab1_task3 = "ai_labs.lab1.task3:main"
 
+lab2_task1 = "ai_labs.lab2.task1:main"
+lab2_task2 = "ai_labs.lab2.task2:main"
+lab2_task3 = "ai_labs.lab2.task3:main"
+lab2_task4 = "ai_labs.lab2.task4:main"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
