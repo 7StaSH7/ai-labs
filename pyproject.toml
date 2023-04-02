@@ -7,10 +7,11 @@ readme = "README.md"
 packages = [{include = "ai_labs"}]
 
 [tool.poetry.dependencies]
-python = "^3.10"
-numpy = "^1.24.2"
+python = ">=3.10,<3.11"
 matplotlib = "^3.6.3"
 black = "^23.1.0"
+neurolab = "^0.3.5"
+scikit-learn = "^1.2.2"
 
 [tool.poetry.scripts]
 lab1_task1 = "ai_labs.lab1.task1:main"
@@ -21,6 +22,8 @@ lab2_task1 = "ai_labs.lab2.task1:main"
 lab2_task2 = "ai_labs.lab2.task2:main"
 lab2_task3 = "ai_labs.lab2.task3:main"
 lab2_task4 = "ai_labs.lab2.task4:main"
+
+lab3_task1 = "ai_labs.lab3.task1:main"
 
 [build-system]
 requires = ["poetry-core"]
