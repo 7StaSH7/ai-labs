@@ -24,6 +24,7 @@ lab2_task3 = "ai_labs.lab2.task3:main"
 lab2_task4 = "ai_labs.lab2.task4:main"
 
 lab3_task1 = "ai_labs.lab3.task1:main"
+lab3_task2 = "ai_labs.lab3.task2:main"
 
 [build-system]
 requires = ["poetry-core"]
