@@ -30,6 +30,9 @@ lab3_task2 = "ai_labs.lab3.task2:main"
 lab4_task1 = "ai_labs.lab4.task1:main"
 lab4_create_alphabet = "ai_labs.lab4.create_alphabet:main"
 
+lab5_task1 = "ai_labs.lab5.task1:main"
+lab5_task2 = "ai_labs.lab5.task2:main"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
