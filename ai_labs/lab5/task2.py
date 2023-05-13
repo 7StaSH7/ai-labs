@@ -25,6 +25,20 @@ def main() -> None:
 
         return W
 
+    def weights_matrix_with_Mmax(N, x, Mmax) -> list:
+        W = np.zeros((N, N))
+
+        for sample in x:
+            if len(sample) != N:
+                return "Размерность числа не соответствует числу нейронов"
+
+            xi = np.array(sample).reshape(N, 1)
+            W += np.dot(xi, xi.T)
+
+        np.fill_diagonal(W, 0)
+
+        return W
+
     def train_hop_net(_digits) -> list:
         n, m = len(_digits), len(_digits[0])
         arr = np.ndarray((n, m))
@@ -61,6 +75,12 @@ def main() -> None:
     N = 3
     x = np.array([[1, -1, 1]])
     w = weights_matrix(N, x)
+    print(w)
+
+    N = 3
+    x = np.array([[-1, 1, -1], [1, -1, 1]])
+    Mmax = 10
+    w = weights_matrix_with_Mmax(N, x, Mmax)
     print(w)
 
     w1 = train_hop_net([zero])
